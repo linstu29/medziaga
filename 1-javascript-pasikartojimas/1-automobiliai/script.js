@@ -1,7 +1,6 @@
-// ======================================
+// =================================================
 // PRADINIAI DUOMENYS
-// ======================================
-
+// =================================================
 
 let automobiliai = [
     {
@@ -41,25 +40,29 @@ let automobiliai = [
     },
 ]
 
-// ======================================
+let rikiavimoBudas = 'numatytasis'
+
+// =================================================
 // MASYVO SPAUSDINIMAS HTML PUSLAPYJE
-// ======================================
+// =================================================
 
 let autoBlokas = document.querySelector('.automobiliu-blokas')
 // console.log(autoBlokas)
+// console.dir(autoBlokas)
 
 function automobiliuSpausdinimas(autoMasyvas) {
     // console.log(autoMasyvas)
+    autoBlokas.innerHTML =''
 
     for (const auto of autoMasyvas) {
         // console.log(auto)
         let autoHtml = `<div class="automobilis">
-    <h3>${auto.marke} ${auto.modelis}</h3>
-        <p><strong>Metai:</strong> ${auto.metai}</p>
-        <p><strong>Kaina:</strong>${auto.kaina} eur</p>
-        <p><strong>Rida:</strong> ${auto.rida} km</p>
-    </div>`
-        //  console.log(autoHtml)
+            <h3>${auto.marke} ${auto.modelis}</h3>
+            <p><strong>Metai:</strong> ${auto.metai}</p>
+            <p><strong>Kaina:</strong> ${auto.kaina} eur</p>
+            <p><strong>Rida:</strong> ${auto.rida} km</p>
+        </div>`
+        // console.log(autoHtml)
         autoBlokas.innerHTML += autoHtml
     }
 }
@@ -70,41 +73,18 @@ automobiliuSpausdinimas(automobiliai)
 // AUTOMOBILIU RIKIAVIMAS
 // =================================================
 
-
 // console.log(document.getElementById('auto-rikiavimas'))
+// console.dir(document.getElementById('auto-rikiavimas'))
+// console.log(document.querySelector('#auto-rikiavimas'))
 // console.log(document.querySelector('.rikiavimas select'))
+
 document.getElementById('auto-rikiavimas').addEventListener('change', (event) => {
     // console.log('pasikeite')
     // console.log(event)
     // console.log(event.target.value)
 
-    let rikiavimoBudas = event.target.value
-
-    if (rikiavimoBudas === 'metai-did') {
-        console.log(automobiliai.sort((a, b) => a.metai - b.metai))
-    } else if (rikiavimoBudas == 'metai-maz') {
-        console.log(automobiliai.sort((a, b) => b.metai - a.metai))
-    } else if (rikiavimoBudas == 'kaina-did') {
-        console.log(automobiliai.sort((a, b) => a.kaina - b.kaina))
-    } else if (rikiavimoBudas == 'kaina-maz') {
-        console.log(automobiliai.sort((a, b) => b.kaina - a.kaina))
-    } else if (rikiavimoBudas == 'rida-did') {
-        console.log(automobiliai.sort((a, b) => a.rida - b.rida))
-    } else if (rikiavimoBudas == 'rida-maz') {
-        console.log(automobiliai.sort((a, b) => b.rida - a.rida))
-    }  else if (rikiavimoBudas == 'marke-did') {
-       // console.log( automobiliai.sort((a, b) => a.marke.localeCompare(b.marke)) )
-       console.log( automobiliai.sort((a, b) => {
-        if (a.marke.toLowerCase() < b.marke.toLowerCase()) {
-            return -1
-        } else if (a.marke.toLowerCase() > b.marke.toLowerCase()) {
-            return 1
-        }
-        return 0
-    }) )
-    } else if (rikiavimoBudas == 'marke-maz') {
-        console.log( automobiliai.sort((a, b) => b.marke.localeCompare(a.marke)) )
-    }
+    rikiavimoBudas = event.target.value
+    rikiuotiAutomobilius()
 })
 
 // document.getElementById('auto-rikiavimas').addEventListener('change', function (event) {
@@ -115,3 +95,36 @@ document.getElementById('auto-rikiavimas').addEventListener('change', (event) =>
 // rikiavimoInput.addEventListener('change', () => {
 //     console.log(rikiavimoInput.value)
 // })
+
+function rikiuotiAutomobilius() {
+    // let surikiuotiAuto = automobiliai.slice()
+    let surikiuotiAuto = [...automobiliai]
+    if (rikiavimoBudas === "metai-did") {
+       // console.log(automobiliai.sort((a, b) => a.metai - b.metai))
+       surikiuotiAuto.sort((a, b) => a.metai - b.metai)
+    } else if (rikiavimoBudas == 'metai-maz') {
+    surikiuotiAuto.sort((a, b) => b.metai - a.metai)
+    } else if (rikiavimoBudas == 'kaina-did') {
+        surikiuotiAuto.sort((a, b) => a.kaina - b.kaina)
+    } else if (rikiavimoBudas == 'kaina-maz') {
+        surikiuotiAuto.sort((a, b) => b.kaina - a.kaina)
+    } else if (rikiavimoBudas == 'rida-did') {
+        surikiuotiAuto.sort((a, b) => a.rida - b.rida)
+    } else if (rikiavimoBudas == 'rida-maz') {
+        surikiuotiAuto.sort((a, b) => b.rida - a.rida)
+    } else if (rikiavimoBudas == 'marke-did') {
+        // console.log( automobiliai.sort((a, b) => a.marke.localeCompare(b.marke)) )
+        surikiuotiAuto.sort((a, b) => {
+            if (a.marke.toLowerCase() < b.marke.toLowerCase()) {
+                return -1
+            } else if (a.marke.toLowerCase() > b.marke.toLowerCase()) {
+                return 1
+            }
+            return 0
+        })
+    } else if (rikiavimoBudas == 'marke-maz') {
+        surikiuotiAuto.sort((a, b) => b.marke.localeCompare(a.marke))
+    }
+    automobiliuSpausdinimas(surikiuotiAuto)
+}
+
