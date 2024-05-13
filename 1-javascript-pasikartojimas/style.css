@@ -1,0 +1,31 @@
+body {
+    background: #f8f8f8;
+}
+
+/* =====================================
+Filtravimas su rikiavimu
+===================================== */
+.filtravimas-ir-rikiavimas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* =====================================
+Automobiliu blokas
+===================================== */
+
+.automobiliu-blokas {
+display:  flex;
+flex-wrap: wrap;
+gap: 20px;
+}
+
+.automobiliu-blokas .automobilis {
+    background: white;
+    width: calc(100% - 3 *20px) /4;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
