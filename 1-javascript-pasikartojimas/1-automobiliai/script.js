@@ -1,3 +1,8 @@
+// ======================================
+// PRADINIAI DUOMENYS
+// ======================================
+
+
 let automobiliai = [
     {
         marke: 'Audi',
@@ -36,6 +41,10 @@ let automobiliai = [
     },
 ]
 
+// ======================================
+// MASYVO SPAUSDINIMAS HTML PUSLAPYJE
+// ======================================
+
 let autoBlokas = document.querySelector('.automobiliu-blokas')
 // console.log(autoBlokas)
 
@@ -57,14 +66,45 @@ function automobiliuSpausdinimas(autoMasyvas) {
 
 automobiliuSpausdinimas(automobiliai)
 
+// =================================================
+// AUTOMOBILIU RIKIAVIMAS
+// =================================================
+
 
 // console.log(document.getElementById('auto-rikiavimas'))
 // console.log(document.querySelector('.rikiavimas select'))
-document.getElementById('auto-rikiavimas').addEventListener('change',(event) => {
-// console.log('pasikeite')
-// console.log(event)
-console.log(event.target.value)
+document.getElementById('auto-rikiavimas').addEventListener('change', (event) => {
+    // console.log('pasikeite')
+    // console.log(event)
+    // console.log(event.target.value)
 
+    let rikiavimoBudas = event.target.value
+
+    if (rikiavimoBudas === 'metai-did') {
+        console.log(automobiliai.sort((a, b) => a.metai - b.metai))
+    } else if (rikiavimoBudas == 'metai-maz') {
+        console.log(automobiliai.sort((a, b) => b.metai - a.metai))
+    } else if (rikiavimoBudas == 'kaina-did') {
+        console.log(automobiliai.sort((a, b) => a.kaina - b.kaina))
+    } else if (rikiavimoBudas == 'kaina-maz') {
+        console.log(automobiliai.sort((a, b) => b.kaina - a.kaina))
+    } else if (rikiavimoBudas == 'rida-did') {
+        console.log(automobiliai.sort((a, b) => a.rida - b.rida))
+    } else if (rikiavimoBudas == 'rida-maz') {
+        console.log(automobiliai.sort((a, b) => b.rida - a.rida))
+    }  else if (rikiavimoBudas == 'marke-did') {
+       // console.log( automobiliai.sort((a, b) => a.marke.localeCompare(b.marke)) )
+       console.log( automobiliai.sort((a, b) => {
+        if (a.marke.toLowerCase() < b.marke.toLowerCase()) {
+            return -1
+        } else if (a.marke.toLowerCase() > b.marke.toLowerCase()) {
+            return 1
+        }
+        return 0
+    }) )
+    } else if (rikiavimoBudas == 'marke-maz') {
+        console.log( automobiliai.sort((a, b) => b.marke.localeCompare(a.marke)) )
+    }
 })
 
 // document.getElementById('auto-rikiavimas').addEventListener('change', function (event) {
