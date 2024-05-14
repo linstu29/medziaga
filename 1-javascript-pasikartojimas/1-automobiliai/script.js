@@ -65,7 +65,7 @@ function automobiliuSpausdinimas() {
     let surikiuotiAutomobiliai = rikiuotiAutomobilius()
 
     let atrinktiAutomobiliai = surikiuotiAutomobiliai.filter(auto => {
-        return auto.marke.toLowerCase().includes(filtravimoFraze.toLocaleLowerCase())
+        return (auto.marke + ' ' + auto.modelis).toLowerCase().includes(filtravimoFraze.toLocaleLowerCase())
     })
     // console.log(atrinktiAutomobiliai)
 
