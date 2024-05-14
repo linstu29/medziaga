@@ -38,8 +38,16 @@ let automobiliai = [
         kaina: 2000,
         rida: 220000,
     },
+    {
+        marke: 'Toyota',
+        modelis: 'Avensis',
+        metai: 2009,
+        kaina: 5000,
+        rida: 150000,
+    },
 ]
 
+let filtravimoFraze = ''
 let rikiavimoBudas = 'numatytasis'
 
 // =================================================
@@ -56,7 +64,12 @@ function automobiliuSpausdinimas() {
 
     let surikiuotiAutomobiliai = rikiuotiAutomobilius()
 
-    for (const auto of surikiuotiAutomobiliai) {
+    let atrinktiAutomobiliai = surikiuotiAutomobiliai.filter(auto => {
+        return auto.marke.toLowerCase().includes(filtravimoFraze.toLocaleLowerCase())
+    })
+    // console.log(atrinktiAutomobiliai)
+
+    for (const auto of atrinktiAutomobiliai) {
         // console.log(auto)
         let autoHtml = `<div class="automobilis">
             <h3>${auto.marke} ${auto.modelis}</h3>
@@ -70,6 +83,25 @@ function automobiliuSpausdinimas() {
 }
 
 automobiliuSpausdinimas()
+
+// =================================================
+// AUTOMOBILIU FILTRAVIMAS
+// =================================================
+
+let filtravimoInputas = document.getElementById('teksto-filtras')
+// console.log(filtravimoInputas)
+
+// google: javascript event input vs change
+// input, change, keyup, keydown, keypress...
+filtravimoInputas.addEventListener('input', () => {
+// console.log('kazkas ivyko')
+// console.log(filtravimoInputas)
+// onsole.log(filtravimoInputas.value)
+filtravimoFraze = filtravimoInputas.value
+automobiliuSpausdinimas()
+})
+
+
 
 // =================================================
 // AUTOMOBILIU RIKIAVIMAS
