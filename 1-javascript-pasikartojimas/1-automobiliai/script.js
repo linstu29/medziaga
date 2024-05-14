@@ -45,6 +45,13 @@ let automobiliai = [
         kaina: 5000,
         rida: 150000,
     },
+    {
+        marke: 'Audi',
+        modelis: 'A6',
+        metai: 2008,
+        kaina: 6000,
+        rida: 180000,
+    },
 ]
 
 let filtravimoFraze = ''
@@ -94,11 +101,11 @@ let filtravimoInputas = document.getElementById('teksto-filtras')
 // google: javascript event input vs change
 // input, change, keyup, keydown, keypress...
 filtravimoInputas.addEventListener('input', () => {
-// console.log('kazkas ivyko')
-// console.log(filtravimoInputas)
-// onsole.log(filtravimoInputas.value)
-filtravimoFraze = filtravimoInputas.value
-automobiliuSpausdinimas()
+    // console.log('kazkas ivyko')
+    // console.log(filtravimoInputas)
+    // onsole.log(filtravimoInputas.value)
+    filtravimoFraze = filtravimoInputas.value
+    automobiliuSpausdinimas()
 })
 
 
@@ -165,3 +172,21 @@ function rikiuotiAutomobilius() {
     return surikiuotiAuto
 }
 
+// =================================================
+// METAI NUO IR IKI DROPDOWNAI
+// =================================================
+
+let metaiNuoInputas = document.getElementById('metai-nuo-filtras')
+let metaiIkiInputas = document.getElementById('metai-iki-filtras')
+
+// console.log(metaiIkiInputas, metaiNuoInputas)
+
+let metaiInputams = [...new Set(automobiliai.map(auto => auto.metai))].sort()
+console.log(metaiInputams)
+
+let metaiOptionsHtml = metaiInputams.map(metai => `<option value="${metai}">${metai}</option>`).join('')
+// console.log(metaiOptionsHtml)
+
+// innerHTML (tinka tik sitas dabar), textContent, innerText
+metaiNuoInputas.innerHTML = metaiOptionsHtml
+metaiIkiInputas.innerHTML = metaiOptionsHtml
