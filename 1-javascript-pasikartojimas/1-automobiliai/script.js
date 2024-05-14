@@ -50,11 +50,13 @@ let autoBlokas = document.querySelector('.automobiliu-blokas')
 // console.log(autoBlokas)
 // console.dir(autoBlokas)
 
-function automobiliuSpausdinimas(autoMasyvas) {
+function automobiliuSpausdinimas() {
     // console.log(autoMasyvas)
-    autoBlokas.innerHTML =''
+    autoBlokas.innerHTML = ''
 
-    for (const auto of autoMasyvas) {
+    let surikiuotiAutomobiliai = rikiuotiAutomobilius()
+
+    for (const auto of surikiuotiAutomobiliai) {
         // console.log(auto)
         let autoHtml = `<div class="automobilis">
             <h3>${auto.marke} ${auto.modelis}</h3>
@@ -67,7 +69,7 @@ function automobiliuSpausdinimas(autoMasyvas) {
     }
 }
 
-automobiliuSpausdinimas(automobiliai)
+automobiliuSpausdinimas()
 
 // =================================================
 // AUTOMOBILIU RIKIAVIMAS
@@ -84,7 +86,8 @@ document.getElementById('auto-rikiavimas').addEventListener('change', (event) =>
     // console.log(event.target.value)
 
     rikiavimoBudas = event.target.value
-    rikiuotiAutomobilius()
+    //rikiuotiAutomobilius()
+    automobiliuSpausdinimas()
 })
 
 // document.getElementById('auto-rikiavimas').addEventListener('change', function (event) {
@@ -99,11 +102,12 @@ document.getElementById('auto-rikiavimas').addEventListener('change', (event) =>
 function rikiuotiAutomobilius() {
     // let surikiuotiAuto = automobiliai.slice()
     let surikiuotiAuto = [...automobiliai]
+
     if (rikiavimoBudas === "metai-did") {
-       // console.log(automobiliai.sort((a, b) => a.metai - b.metai))
-       surikiuotiAuto.sort((a, b) => a.metai - b.metai)
+        // console.log(automobiliai.sort((a, b) => a.metai - b.metai))
+        surikiuotiAuto.sort((a, b) => a.metai - b.metai)
     } else if (rikiavimoBudas == 'metai-maz') {
-    surikiuotiAuto.sort((a, b) => b.metai - a.metai)
+        surikiuotiAuto.sort((a, b) => b.metai - a.metai)
     } else if (rikiavimoBudas == 'kaina-did') {
         surikiuotiAuto.sort((a, b) => a.kaina - b.kaina)
     } else if (rikiavimoBudas == 'kaina-maz') {
@@ -125,6 +129,7 @@ function rikiuotiAutomobilius() {
     } else if (rikiavimoBudas == 'marke-maz') {
         surikiuotiAuto.sort((a, b) => b.marke.localeCompare(a.marke))
     }
-    automobiliuSpausdinimas(surikiuotiAuto)
+    //  automobiliuSpausdinimas(surikiuotiAuto)
+    return surikiuotiAuto
 }
 
