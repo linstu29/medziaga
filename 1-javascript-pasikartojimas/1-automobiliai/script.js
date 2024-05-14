@@ -1,7 +1,3 @@
-// =================================================
-// PRADINIAI DUOMENYS
-// =================================================
-
 let automobiliai = [
     {
         marke: 'Audi',
@@ -57,6 +53,9 @@ let automobiliai = [
 let filtravimoFraze = ''
 let rikiavimoBudas = 'numatytasis'
 
+let dataNuo = null
+let dataIki = null
+
 // =================================================
 // MASYVO SPAUSDINIMAS HTML PUSLAPYJE
 // =================================================
@@ -72,10 +71,12 @@ function automobiliuSpausdinimas() {
     let surikiuotiAutomobiliai = rikiuotiAutomobilius()
 
     let atrinktiAutomobiliai = surikiuotiAutomobiliai.filter(auto => {
-        return (auto.marke + ' ' + auto.modelis).toLowerCase().includes(filtravimoFraze.toLocaleLowerCase())
+        return (auto.marke + ' ' + auto.modelis).toLowerCase().includes(filtravimoFraze.toLowerCase())
+            && auto.metai >= dataNuo && auto.metai <= dataIki
     })
-    // console.log(atrinktiAutomobiliai)
 
+    // console.log(atrinktiAutomobiliai)
+    
     for (const auto of atrinktiAutomobiliai) {
         // console.log(auto)
         let autoHtml = `<div class="automobilis">
@@ -89,7 +90,7 @@ function automobiliuSpausdinimas() {
     }
 }
 
-automobiliuSpausdinimas()
+// automobiliuSpausdinimas()
 
 // =================================================
 // AUTOMOBILIU FILTRAVIMAS
@@ -97,18 +98,17 @@ automobiliuSpausdinimas()
 
 let filtravimoInputas = document.getElementById('teksto-filtras')
 // console.log(filtravimoInputas)
+// console.dir(filtravimoInputas)
 
 // google: javascript event input vs change
-// input, change, keyup, keydown, keypress...
+// input, change, keyup, keydown, keypress, ...
 filtravimoInputas.addEventListener('input', () => {
     // console.log('kazkas ivyko')
-    // console.log(filtravimoInputas)
-    // onsole.log(filtravimoInputas.value)
+    // console.dir(filtravimoInputas)
+    // console.log(filtravimoInputas.value)
     filtravimoFraze = filtravimoInputas.value
     automobiliuSpausdinimas()
 })
-
-
 
 // =================================================
 // AUTOMOBILIU RIKIAVIMAS
@@ -125,7 +125,7 @@ document.getElementById('auto-rikiavimas').addEventListener('change', (event) =>
     // console.log(event.target.value)
 
     rikiavimoBudas = event.target.value
-    //rikiuotiAutomobilius()
+    // rikiuotiAutomobilius()
     automobiliuSpausdinimas()
 })
 
@@ -168,7 +168,8 @@ function rikiuotiAutomobilius() {
     } else if (rikiavimoBudas == 'marke-maz') {
         surikiuotiAuto.sort((a, b) => b.marke.localeCompare(a.marke))
     }
-    //  automobiliuSpausdinimas(surikiuotiAuto)
+
+    // automobiliuSpausdinimas(surikiuotiAuto)
     return surikiuotiAuto
 }
 
@@ -179,10 +180,13 @@ function rikiuotiAutomobilius() {
 let metaiNuoInputas = document.getElementById('metai-nuo-filtras')
 let metaiIkiInputas = document.getElementById('metai-iki-filtras')
 
-// console.log(metaiIkiInputas, metaiNuoInputas)
+// console.log(metaiNuoInputas, metaiIkiInputas)
 
 let metaiInputams = [...new Set(automobiliai.map(auto => auto.metai))].sort()
-console.log(metaiInputams)
+// console.log(metaiInputams)
+
+dataNuo = Math.min(...metaiInputams)
+dataIki = Math.max(...metaiInputams)
 
 let metaiOptionsHtml = metaiInputams.map(metai => `<option value="${metai}">${metai}</option>`).join('')
 // console.log(metaiOptionsHtml)
@@ -190,3 +194,25 @@ let metaiOptionsHtml = metaiInputams.map(metai => `<option value="${metai}">${me
 // innerHTML (tinka tik sitas dabar), textContent, innerText
 metaiNuoInputas.innerHTML = metaiOptionsHtml
 metaiIkiInputas.innerHTML = metaiOptionsHtml
+
+metaiIkiInputas.querySelector(`option[value="${ Math.max(...metaiInputams) }"]`).selected = true
+
+metaiNuoInputas.addEventListener('change', () => {
+    // console.log('pakeistas metai nuo')
+    // console.log('metai nuo:', metaiNuoInputas.value)
+    dataNuo = parseInt(metaiNuoInputas.value)
+    automobiliuSpausdinimas()
+})
+
+metaiIkiInputas.addEventListener('change', () => {
+    // console.log('pakeistas metai iki')
+    // console.log('metai iki:', metaiIkiInputas.value)
+    dataIki = parseInt(metaiIkiInputas.value)
+    automobiliuSpausdinimas()
+})
+
+// =================================================
+// PRADINIU DUOMENU ATSPAUSDINIMAS
+// =================================================
+
+automobiliuSpausdinimas()
