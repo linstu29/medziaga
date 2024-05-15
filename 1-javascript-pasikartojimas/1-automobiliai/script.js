@@ -87,9 +87,17 @@ function automobiliuSpausdinimas() {
     // console.log('duomenu kiekis:', atrinktiAutomobiliai.length)
 
     autoBlokas.innerHTML = `<div class="automobilis naujas-auto">
-        <button class="prideti-nauja">+</button>
+        <button class="prideti-nauja" onclick="modalAtidarymoMygtukas()">+</button>
         <h3>Pridėti naują</h3>
     </div>`
+
+    // let naujasButtonas = document.createElement('button')
+    // naujasButtonas.textContent = '+'
+    // naujasButtonas.classList.add('prideti-nauja')
+    // document.querySelector('.naujas-auto').appendChild(naujasButtonas)
+    // naujasButtonas.addEventListener('click', () => {
+    //     console.log('paspaudei ant prideti nauja')
+    // })
 
     if (atrinktiAutomobiliai.length > 0) {
         for (const auto of atrinktiAutomobiliai) {
@@ -276,6 +284,23 @@ kainaIkiInputas.nextElementSibling.addEventListener('click', () => {
     kainaIki += 100
     kainaIkiInputas.value = kainaIki
     automobiliuSpausdinimas()
+})
+
+// =================================================
+// MODAL DEL NAUJO AUTOMOBILIO
+// =================================================
+
+let naujasAutoModal = document.querySelector('.modal-wrapper')
+// console.log(naujasAutoModal)
+
+function modalAtidarymoMygtukas() {
+    // console.log('iskvieciau modal')
+    naujasAutoModal.classList.add('active')
+}
+
+// document.querySelector('.modal-wrapper .backdrop')
+naujasAutoModal.querySelector('.backdrop').addEventListener('click', () => {
+    naujasAutoModal.classList.remove('active')
 })
 
 // =================================================

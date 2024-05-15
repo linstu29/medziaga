@@ -7,29 +7,39 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        
+        <div class="modal-wrapper">
+            <div class="backdrop"></div>
+            <div class="modal">
+                modalas
+            </div>
+        </div>
+    
+        <!-- .filtravimas-ir-rikiavimas>.filtravimas{Filtravimas}+.rikiavimas{Rikiavmas} -->
         <div class="filtravimas-ir-rikiavimas">
             <div class="filtravimas">
+                <!-- input#teksto-filtras -->
                 <input type="text" id="teksto-filtras" placeholder="Filtruoti pagal markę">
-           
-                <label for="metai-nuo-filtras">Metai nuo: </label>
+    
+                <label for="metai-nuo-filtras">Metai nuo:</label>
+                <!-- select#metai-nuo-filtras -->
                 <select id="metai-nuo-filtras"></select>
-
-                <label for="metai-iki-filtras">Metai iki: </label>
+    
+                <!-- label[for="metai-iki-filtras"]{Metai iki:}+select#metai-iki-filtras -->
+                <label for="metai-iki-filtras">Metai iki:</label>
                 <select id="metai-iki-filtras"></select>
-       
+    
+                <!-- label[for="kaina-iki-filtras"]{Kaina iki:}+button{-}+input#kaina-iki-filtras[type="number" value="10000"]+button{+} -->
                 <label for="kaina-iki-filtras">Kaina iki:</label>
                 <button>-</button>
                 <input type="number" id="kaina-iki-filtras" value="10000" step="100">
                 <button>+</button>
-               
-
             </div>
             <div class="rikiavimas">
-                <select name="" id="auto-rikiavimas">
+                <!-- select>option*6 -->
+                <select id="auto-rikiavimas">
                     <option value="numatytasis">Numatytasis</option>
-                    <option value="marke-did">Merke didejimo tvarka</option>
-                    <option value="marke-maz">Marke mazejimo tvarka</option>
+                    <option value="marke-did">Markė - didėjimo tvarka</option>
+                    <option value="marke-maz">Markė - mažėjimo tvarka</option>
                     <option value="metai-did">Metai - didėjimo tvarka</option>
                     <option value="metai-maz">Metai - mažėjimo tvarka</option>
                     <option value="kaina-did">Kaina - didėjimo tvarka</option>
@@ -39,13 +49,13 @@
                 </select>
             </div>
         </div>
-
+        
         <!-- .automobiliu-blokas>.automobilis>h3{Marke modelis} -->
         <div class="automobiliu-blokas">
-          <!--  <div class="automobilis">
+            <!-- <div class="automobilis">
                 <h3>Marke modelis</h3>
                 <p><strong>Metai:</strong> ____</p>
-                <p><strong>Kaina:</strong> ____ €</p>
+                <p><strong>Kaina:</strong> ____ eur</p>
                 <p><strong>Rida:</strong> ____ km</p>
             </div> -->
         </div>

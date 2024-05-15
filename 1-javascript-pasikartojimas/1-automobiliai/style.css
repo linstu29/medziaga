@@ -1,5 +1,49 @@
 body {
     background: #f8f8f8;
+    margin: 0;
+}
+
+/* =====================================
+Modalo stiliai
+===================================== */
+
+/* pirmas variantas del active */
+
+/* .modal-wrapper {
+    display: none;
+}
+
+.modal-wrapper.active {
+    display: block;
+} */
+
+/* antras variantas del active */
+
+.modal-wrapper:not(.active) {
+    display: none;
+}
+
+/* pabaiga del active */
+
+.modal-wrapper .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.modal-wrapper .modal {
+    background: white;
+    position: fixed;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    box-sizing: border-box;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* =====================================
