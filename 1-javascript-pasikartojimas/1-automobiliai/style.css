@@ -5,6 +5,7 @@ body {
 /* =====================================
 Filtravimas su rikiavimu
 ===================================== */
+
 .filtravimas-ir-rikiavimas {
     display: flex;
     justify-content: space-between;
@@ -21,18 +22,36 @@ Automobiliu blokas
 ===================================== */
 
 .automobiliu-blokas {
-display:  flex;
-flex-wrap: wrap;
-gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .automobiliu-blokas .automobilis {
     background: white;
-    width: calc(100% - 3 *20px) /4;
+    width: calc((100% - 3 * 20px) / 4);
     padding: 30px;
     box-sizing: border-box;
 }
 
 .automobiliu-blokas .nerasta {
     color: red;
+}
+
+.automobilis.naujas-auto {
+    text-align: center;
+}
+
+.automobilis.naujas-auto button.prideti-nauja {
+    background: none;
+    border: 2px dashed #ccc;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+.automobilis.naujas-auto button.prideti-nauja:hover {
+    background: #ebebeb;
 }

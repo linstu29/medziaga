@@ -86,6 +86,11 @@ function automobiliuSpausdinimas() {
     // console.log(atrinktiAutomobiliai)
     // console.log('duomenu kiekis:', atrinktiAutomobiliai.length)
 
+    autoBlokas.innerHTML = `<div class="automobilis naujas-auto">
+        <button class="prideti-nauja">+</button>
+        <h3>Pridėti naują</h3>
+    </div>`
+
     if (atrinktiAutomobiliai.length > 0) {
         for (const auto of atrinktiAutomobiliai) {
             // console.log(auto)
@@ -99,7 +104,7 @@ function automobiliuSpausdinimas() {
             autoBlokas.innerHTML += autoHtml
         }
     } else {
-        autoBlokas.innerHTML = '<p class="nerasta">Automobilių nerasta pagal duotus filtrus</p>'
+        autoBlokas.innerHTML += '<p class="nerasta">Automobilių nerasta pagal duotus filtrus</p>'
     }
 }
 
