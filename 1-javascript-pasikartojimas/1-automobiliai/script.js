@@ -229,7 +229,7 @@ let metaiOptionsHtml = metaiInputams.map(metai => `<option value="${metai}">${me
 metaiNuoInputas.innerHTML = metaiOptionsHtml
 metaiIkiInputas.innerHTML = metaiOptionsHtml
 
-metaiIkiInputas.querySelector(`option[value="${ Math.max(...metaiInputams) }"]`).selected = true
+metaiIkiInputas.querySelector(`option[value="${Math.max(...metaiInputams)}"]`).selected = true
 
 metaiNuoInputas.addEventListener('change', () => {
     // console.log('pakeistas metai nuo')
@@ -302,6 +302,36 @@ function modalAtidarymoMygtukas() {
 naujasAutoModal.querySelector('.backdrop').addEventListener('click', () => {
     naujasAutoModal.classList.remove('active')
 })
+
+let naujasAutoForma = naujasAutoModal.querySelector('form')
+// console.log(naujasAutoForma)
+
+naujasAutoForma.addEventListener('submit', (event) => {
+    event.preventDefault()
+    // console.log(event)
+    // console.log(event.target.elements)
+    // console.log(event.target.elements.markeInput.value) // string
+    // console.log(event.target.elements.modelisInput.value) // string
+    // console.log(event.target.elements.metaiInput.valueAsNumber) // number
+    // console.log(event.target.elements.kainaInput.valueAsNumber) // number
+    // console.log(event.target.elements.ridaInput.valueAsNumber) // number
+
+
+    let automobilis = {
+        marke: event.target.elements.markeInput.value,
+        modelis: event.target.elements.modelisInput.value,
+        metai: event.target.elements.metaiInput.valueAsNumber,
+        kaina: event.target.elements.kainaInput.valueAsNumber,
+        rida: event.target.elements.ridaInput.valueAsNumber,
+    }
+
+    // console.log(automobilis)
+    automobiliai.push(automobilis)
+    automobiliuSpausdinimas()
+})
+
+
+
 
 // =================================================
 // PRADINIU DUOMENU ATSPAUSDINIMAS

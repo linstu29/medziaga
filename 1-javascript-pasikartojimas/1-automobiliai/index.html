@@ -10,28 +10,46 @@
         <div class="modal-wrapper">
             <div class="backdrop"></div>
             <div class="modal">
-                modalas
+                <form>
+                    <label for="markeInput">Markė:</label>
+                    <input type="text" name="markeInput" id="markeInput">
+
+                    <label for="modelisInput">Modelis:</label>
+                    <input type="text" id="modelisInput">
+
+                    <label for="metaiInput">Metai:</label>
+                    <input type="number" id="metaiInput">
+
+                    <label for="kainaInput">Kaina:</label>
+                    <input type="number" id="kainaInput">
+                    
+                    <label for="ridaInput">Rida:</label>
+                    <input type="number" id="ridaInput">
+                    <button type="submit">Sukurti</button>
+                </form>
             </div>
         </div>
-    
+
         <!-- .filtravimas-ir-rikiavimas>.filtravimas{Filtravimas}+.rikiavimas{Rikiavmas} -->
         <div class="filtravimas-ir-rikiavimas">
             <div class="filtravimas">
                 <!-- input#teksto-filtras -->
-                <input type="text" id="teksto-filtras" placeholder="Filtruoti pagal markę">
-    
+                <input type="text" id="teksto-filtras"
+                    placeholder="Filtruoti pagal markę">
+
                 <label for="metai-nuo-filtras">Metai nuo:</label>
                 <!-- select#metai-nuo-filtras -->
                 <select id="metai-nuo-filtras"></select>
-    
+
                 <!-- label[for="metai-iki-filtras"]{Metai iki:}+select#metai-iki-filtras -->
                 <label for="metai-iki-filtras">Metai iki:</label>
                 <select id="metai-iki-filtras"></select>
-    
+
                 <!-- label[for="kaina-iki-filtras"]{Kaina iki:}+button{-}+input#kaina-iki-filtras[type="number" value="10000"]+button{+} -->
                 <label for="kaina-iki-filtras">Kaina iki:</label>
                 <button>-</button>
-                <input type="number" id="kaina-iki-filtras" value="10000" step="100">
+                <input type="number" id="kaina-iki-filtras" value="10000"
+                    step="100">
                 <button>+</button>
             </div>
             <div class="rikiavimas">
@@ -49,7 +67,7 @@
                 </select>
             </div>
         </div>
-        
+
         <!-- .automobiliu-blokas>.automobilis>h3{Marke modelis} -->
         <div class="automobiliu-blokas">
             <!-- <div class="automobilis">

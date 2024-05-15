@@ -46,6 +46,24 @@ Modalo stiliai
     transform: translate(-50%, -50%);
 }
 
+
+/* =====================================
+Automobiliu blokas
+===================================== */
+
+modal-wrapper form label,
+.modal-wrapper form input,
+.modal-wrapper form button {
+    display: block;
+}
+
+.modal-wrapper form label {
+    margin-bottom: 5px;
+}
+.modal-wrapper form input {
+    margin-bottom: 10px;
+}
+
 /* =====================================
 Filtravimas su rikiavimu
 ===================================== */
@@ -60,6 +78,10 @@ Filtravimas su rikiavimu
 .filtravimas #kaina-iki-filtras {
     width: 60px;
 }
+
+input[type="number"] {
+    -moz-appearance: textfield;
+  }
 
 /* =====================================
 Automobiliu blokas
