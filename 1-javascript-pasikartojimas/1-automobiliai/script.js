@@ -71,7 +71,7 @@ let autoBlokas = document.querySelector('.automobiliu-blokas')
 // console.dir(autoBlokas)
 
 function automobiliuSpausdinimas() {
-    console.log('vyksta automobiliu spausdinimas')
+    // console.log('vyksta automobiliu spausdinimas')
     // console.log(autoMasyvas)
     autoBlokas.innerHTML = ''
 
@@ -238,11 +238,11 @@ metaiIkiInputas.addEventListener('change', () => {
 
 let kainaIkiInputas = document.getElementById('kaina-iki-filtras')
 // console.log(kainaIkiInputas)
-
+// console.dir(kainaIkiInputas)
 
 kainaIkiInputas.addEventListener('input', () => {
-// console.log('pasikeite kaina iki')
-// console.log(kainaIkiInputas.valueAsNumber, parseInt(kainaIkiInputas.value))
+    // console.log('pasikeite kaina iki')
+    // console.log(kainaIkiInputas.valueAsNumber, parseInt(kainaIkiInputas.value))
     kainaIki = kainaIkiInputas.valueAsNumber
     automobiliuSpausdinimas()
 })
@@ -255,6 +255,24 @@ kainaIkiInputas.addEventListener('change', () => {
         automobiliuSpausdinimas()
     }
 })
+
+// Minuso mygtukas
+kainaIkiInputas.previousElementSibling.addEventListener('click', () => {
+    // console.log('paspaudziau ant minusiuko')
+    kainaIki -= 100
+    // kainaIki = kainaIki - 100
+    kainaIkiInputas.value = kainaIki
+    automobiliuSpausdinimas()
+})
+
+// Pliuso mygtukas
+kainaIkiInputas.nextElementSibling.addEventListener('click', () => {
+    // console.log('paspaudziau ant pliuso')
+    kainaIki += 100
+    kainaIkiInputas.value = kainaIki
+    automobiliuSpausdinimas()
+})
+
 // =================================================
 // PRADINIU DUOMENU ATSPAUSDINIMAS
 // =================================================
