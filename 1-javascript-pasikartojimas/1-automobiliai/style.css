@@ -12,6 +12,10 @@ Filtravimas su rikiavimu
     margin-bottom: 20px;
 }
 
+.filtravimas #kaina-iki-filtras {
+    width: 60px;
+}
+
 /* =====================================
 Automobiliu blokas
 ===================================== */
@@ -29,3 +33,6 @@ gap: 20px;
     box-sizing: border-box;
 }
 
+.automobiliu-blokas .nerasta {
+    color: red;
+}

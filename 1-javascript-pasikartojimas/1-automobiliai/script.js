@@ -1,3 +1,7 @@
+// =================================================
+// PRADINIAI DUOMENYS
+// =================================================
+
 let automobiliai = [
     {
         marke: 'Audi',
@@ -56,6 +60,8 @@ let rikiavimoBudas = 'numatytasis'
 let dataNuo = null
 let dataIki = null
 
+let kainaIki = 10000
+
 // =================================================
 // MASYVO SPAUSDINIMAS HTML PUSLAPYJE
 // =================================================
@@ -65,6 +71,7 @@ let autoBlokas = document.querySelector('.automobiliu-blokas')
 // console.dir(autoBlokas)
 
 function automobiliuSpausdinimas() {
+    console.log('vyksta automobiliu spausdinimas')
     // console.log(autoMasyvas)
     autoBlokas.innerHTML = ''
 
@@ -73,20 +80,26 @@ function automobiliuSpausdinimas() {
     let atrinktiAutomobiliai = surikiuotiAutomobiliai.filter(auto => {
         return (auto.marke + ' ' + auto.modelis).toLowerCase().includes(filtravimoFraze.toLowerCase())
             && auto.metai >= dataNuo && auto.metai <= dataIki
+            && auto.kaina <= kainaIki
     })
 
     // console.log(atrinktiAutomobiliai)
-    
-    for (const auto of atrinktiAutomobiliai) {
-        // console.log(auto)
-        let autoHtml = `<div class="automobilis">
-            <h3>${auto.marke} ${auto.modelis}</h3>
-            <p><strong>Metai:</strong> ${auto.metai}</p>
-            <p><strong>Kaina:</strong> ${auto.kaina} eur</p>
-            <p><strong>Rida:</strong> ${auto.rida} km</p>
-        </div>`
-        // console.log(autoHtml)
-        autoBlokas.innerHTML += autoHtml
+    // console.log('duomenu kiekis:', atrinktiAutomobiliai.length)
+
+    if (atrinktiAutomobiliai.length > 0) {
+        for (const auto of atrinktiAutomobiliai) {
+            // console.log(auto)
+            let autoHtml = `<div class="automobilis">
+                <h3>${auto.marke} ${auto.modelis}</h3>
+                <p><strong>Metai:</strong> ${auto.metai}</p>
+                <p><strong>Kaina:</strong> ${auto.kaina} eur</p>
+                <p><strong>Rida:</strong> ${auto.rida} km</p>
+            </div>`
+            // console.log(autoHtml)
+            autoBlokas.innerHTML += autoHtml
+        }
+    } else {
+        autoBlokas.innerHTML = '<p class="nerasta">Automobilių nerasta pagal duotus filtrus</p>'
     }
 }
 
@@ -182,8 +195,16 @@ let metaiIkiInputas = document.getElementById('metai-iki-filtras')
 
 // console.log(metaiNuoInputas, metaiIkiInputas)
 
-let metaiInputams = [...new Set(automobiliai.map(auto => auto.metai))].sort()
+// let metaiInputams = [...new Set(automobiliai.map(auto => auto.metai))].sort()
+let metaiInputams = []
 // console.log(metaiInputams)
+let maziausiMetai = Math.min(...automobiliai.map(auto => auto.metai))
+let didziausiMetai = new Date().getFullYear()
+// console.log(maziausiMetai, didziausiMetai)
+
+for (let i = maziausiMetai; i <= didziausiMetai; i++) {
+    metaiInputams.push(i)
+}
 
 dataNuo = Math.min(...metaiInputams)
 dataIki = Math.max(...metaiInputams)
@@ -211,6 +232,29 @@ metaiIkiInputas.addEventListener('change', () => {
     automobiliuSpausdinimas()
 })
 
+// =================================================
+// KAINA IKI FILTRAS
+// =================================================
+
+let kainaIkiInputas = document.getElementById('kaina-iki-filtras')
+// console.log(kainaIkiInputas)
+
+
+kainaIkiInputas.addEventListener('input', () => {
+// console.log('pasikeite kaina iki')
+// console.log(kainaIkiInputas.valueAsNumber, parseInt(kainaIkiInputas.value))
+    kainaIki = kainaIkiInputas.valueAsNumber
+    automobiliuSpausdinimas()
+})
+
+kainaIkiInputas.addEventListener('change', () => {
+    // console.log('pasikeite')
+    if (kainaIkiInputas.valueAsNumber <= 0 || kainaIkiInputas.value == '') {
+        kainaIkiInputas.value = 10000
+        kainaIki = 10000
+        automobiliuSpausdinimas()
+    }
+})
 // =================================================
 // PRADINIU DUOMENU ATSPAUSDINIMAS
 // =================================================
