@@ -295,11 +295,22 @@ let naujasAutoModal = document.querySelector('.modal-wrapper')
 
 function modalAtidarymoMygtukas() {
     // console.log('iskvieciau modal')
+   // console.log(naujasAutoModal.querySelector('form'))
+   let forma = naujasAutoModal.querySelector('form')
     naujasAutoModal.classList.add('active')
+    forma.elements.markeInput.value = ''
+    forma.elements.modelisInput.value = ''
+    forma.elements.metaiInput.value = ''
+    forma.elements.kainaInput.value = ''
+    forma.elements.ridaInput.value = ''
 }
 
 // document.querySelector('.modal-wrapper .backdrop')
 naujasAutoModal.querySelector('.backdrop').addEventListener('click', () => {
+    naujasAutoModal.classList.remove('active')
+})
+
+naujasAutoModal.querySelector('button.close').addEventListener('click', () => {
     naujasAutoModal.classList.remove('active')
 })
 
@@ -325,12 +336,34 @@ naujasAutoForma.addEventListener('submit', (event) => {
         rida: event.target.elements.ridaInput.valueAsNumber,
     }
 
+    if (automobilis.marke == '' || automobilis.modelis == '' || isNaN(automobilis.metai)
+        || isNaN(automobilis.kaina) || isNaN(automobilis.rida)) {
+        alert('Užpildykite visus laukus teisingai')
+        // return nutrauks sekantį šitos funkcijos veikimą, kad nebūtų valomi laukeliai
+        // ar pridedamas auto į masyvą
+        return
+    }
+
+    if (automobilis.metai < 2004) {
+        alert('Automobilis negali būti senesnis nei 2004 metai')
+        return
+    }
+    if (automobilis.rida <= 0) {
+        alert('Automobilio rida turi būti didesnė už 0')
+        return
+    }
+
+    // event.target.elements.markeInput.value = ''
+    // event.target.elements.modelisInput.value = ''
+    // event.target.elements.metaiInput.value = ''
+    // event.target.elements.kainaInput.value = ''
+    // event.target.elements.ridaInput.value = ''
+
     // console.log(automobilis)
     automobiliai.push(automobilis)
     automobiliuSpausdinimas()
+    naujasAutoModal.classList
 })
-
-
 
 
 // =================================================

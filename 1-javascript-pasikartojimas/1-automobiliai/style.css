@@ -64,6 +64,15 @@ modal-wrapper form label,
     margin-bottom: 10px;
 }
 
+.modal-wrapper .modal .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-wrapper .modal .title h1 {
+    font-size: 20px;
+}
+
 /* =====================================
 Filtravimas su rikiavimu
 ===================================== */
