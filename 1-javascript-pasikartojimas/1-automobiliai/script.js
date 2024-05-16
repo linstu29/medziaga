@@ -4,6 +4,7 @@
 
 let automobiliai = [
     {
+        id: 1,
         marke: 'Audi',
         modelis: 'A4',
         metai: 2005,
@@ -11,6 +12,7 @@ let automobiliai = [
         rida: 200000,
     },
     {
+        id: 2,
         marke: 'BMW',
         modelis: '320',
         metai: 2007,
@@ -18,6 +20,7 @@ let automobiliai = [
         rida: 250000,
     },
     {
+        id: 3,
         marke: 'VW',
         modelis: 'Passat',
         metai: 2008,
@@ -25,6 +28,7 @@ let automobiliai = [
         rida: 230000,
     },
     {
+        id: 4,
         marke: 'Opel',
         modelis: 'Astra',
         metai: 2006,
@@ -32,6 +36,7 @@ let automobiliai = [
         rida: 180000,
     },
     {
+        id: 5,
         marke: 'Toyota',
         modelis: 'Corolla',
         metai: 2004,
@@ -39,6 +44,7 @@ let automobiliai = [
         rida: 220000,
     },
     {
+        id: 6,
         marke: 'Toyota',
         modelis: 'Avensis',
         metai: 2009,
@@ -46,6 +52,7 @@ let automobiliai = [
         rida: 150000,
     },
     {
+        id: 7,
         marke: 'Audi',
         modelis: 'A6',
         metai: 2008,
@@ -107,6 +114,7 @@ function automobiliuSpausdinimas() {
                 <p><strong>Metai:</strong> ${auto.metai}</p>
                 <p><strong>Kaina:</strong> ${auto.kaina} eur</p>
                 <p><strong>Rida:</strong> ${auto.rida} km</p>
+                <button onclick="trintiAutomobili(${auto.id})">Trinti</button>
             </div>`
             // console.log(autoHtml)
             autoBlokas.innerHTML += autoHtml
@@ -229,7 +237,7 @@ let metaiOptionsHtml = metaiInputams.map(metai => `<option value="${metai}">${me
 metaiNuoInputas.innerHTML = metaiOptionsHtml
 metaiIkiInputas.innerHTML = metaiOptionsHtml
 
-metaiIkiInputas.querySelector(`option[value="${Math.max(...metaiInputams)}"]`).selected = true
+metaiIkiInputas.querySelector(`option[value="${ Math.max(...metaiInputams) }"]`).selected = true
 
 metaiNuoInputas.addEventListener('change', () => {
     // console.log('pakeistas metai nuo')
@@ -295,14 +303,15 @@ let naujasAutoModal = document.querySelector('.modal-wrapper')
 
 function modalAtidarymoMygtukas() {
     // console.log('iskvieciau modal')
-   // console.log(naujasAutoModal.querySelector('form'))
-   let forma = naujasAutoModal.querySelector('form')
-    naujasAutoModal.classList.add('active')
+    // console.dir(naujasAutoModal.querySelector('form'))
+    let forma = naujasAutoModal.querySelector('form')
     forma.elements.markeInput.value = ''
     forma.elements.modelisInput.value = ''
     forma.elements.metaiInput.value = ''
     forma.elements.kainaInput.value = ''
     forma.elements.ridaInput.value = ''
+
+    naujasAutoModal.classList.add('active')
 }
 
 // document.querySelector('.modal-wrapper .backdrop')
@@ -327,8 +336,9 @@ naujasAutoForma.addEventListener('submit', (event) => {
     // console.log(event.target.elements.kainaInput.valueAsNumber) // number
     // console.log(event.target.elements.ridaInput.valueAsNumber) // number
 
-
     let automobilis = {
+        id: Date.now(),
+        // id: automobiliai.length,
         marke: event.target.elements.markeInput.value,
         modelis: event.target.elements.modelisInput.value,
         metai: event.target.elements.metaiInput.valueAsNumber,
@@ -348,6 +358,7 @@ naujasAutoForma.addEventListener('submit', (event) => {
         alert('Automobilis negali būti senesnis nei 2004 metai')
         return
     }
+
     if (automobilis.rida <= 0) {
         alert('Automobilio rida turi būti didesnė už 0')
         return
@@ -362,9 +373,18 @@ naujasAutoForma.addEventListener('submit', (event) => {
     // console.log(automobilis)
     automobiliai.push(automobilis)
     automobiliuSpausdinimas()
-    naujasAutoModal.classList
+    naujasAutoModal.classList.remove('active')
 })
 
+// =================================================
+// TRINTI AUTOMOBILI
+// =================================================
+
+function trintiAutomobili(id) {
+    // console.log('trinsime auto su id', id)
+    automobiliai = automobiliai.filter(auto => auto.id !== id)
+    automobiliuSpausdinimas()
+}
 
 // =================================================
 // PRADINIU DUOMENU ATSPAUSDINIMAS
