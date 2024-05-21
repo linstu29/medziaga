@@ -41,8 +41,9 @@
         <div class="container">
             <h2>Naujausi projektai</h2>
             <div class="projects-list">
+                <p>Kraunasi...</p>
                 <!-- .project*3>h3{Title $}+p{Aprasymas}+p{Technologijos}+p>a.btn[href=#]{Peržiūrėti} -->
-                <div class="project">
+                <!-- <div class="project">
                     <h3>Title 1</h3>
                     <p>Aprasymas</p>
                     <p>
@@ -69,7 +70,17 @@
                     <p>
                         <a href="#" class="btn">Peržiūrėti</a>
                     </p>
-                </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- .work-experience.section>.container>h2{Darbo patirtis}+.work-experience-list -->
+    <div class="work-experience section">
+        <div class="container">
+            <h2>Darbo patirtis</h2>
+            <div class="work-experience-list">
+                <p>Kraunasi...</p>
             </div>
         </div>
     </div>
@@ -93,6 +104,28 @@
                             <p>
                                 <a href="${project.link}" class="btn" target="_blank">Peržiūrėti</a>
                             </p>
+                        </div>`;
+                }
+            })
+    </script>
+    <script>
+        fetch('http://localhost:7788/work-experience/latest/2')
+            .then(response => response.json())
+            .then(experience => {
+                // console.log(experience)
+
+                let blokas = document.querySelector('.work-experience .work-experience-list')
+                // console.log(blokas)
+
+                blokas.innerHTML = ''
+
+                for (const job of experience) {
+                    blokas.innerHTML += `<div class="job">
+                            <h3>${job.company}</h3>
+                            <p>${job.date}</p>
+                            <p>${job.title}</p>
+                            <p>${job.description}</p>
+                            <p>${ job.skills.map(skill => '<span>' + skill + '</span>').join(' ') }</p>
                         </div>`;
                 }
             })

@@ -113,3 +113,27 @@ PROJECTS SECTION STYLES
     font-size: 10px;
     text-transform: uppercase;
 }
+
+/* ============================================
+WORK EXPERIENCES SECTION STYLES
+============================================ */
+
+.work-experience {
+    background: #f9f9f9;
+}
+
+.work-experience .work-experience-list .job {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: white;
+}
+
+.work-experience .work-experience-list .job p span {
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 10px;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
