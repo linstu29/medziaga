@@ -137,3 +137,17 @@ WORK EXPERIENCES SECTION STYLES
     text-transform: uppercase;
     border-radius: 5px;
 }
+
+/* ============================================
+FOOTER STYLES
+============================================ */
+
+footer {
+    background-color: #222;
+    padding: 20px 40px;
+}
+
+footer p {
+    margin: 0;
+    color: white;
+}
