@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="lt">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Vardenis Pavardenis portfolio</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vardenis Pavardenis portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
     <!-- nav>.container>.brand+ul -->
     <nav>
         <div class="container">
@@ -32,5 +35,67 @@
             <a href="projektai.html" class="btn">Mano projektai</a>
         </div>
     </header>
-    </body>
+
+    <!-- .newest-projects.section>.container>h2+.projects-list -->
+    <div class="newest-projects section">
+        <div class="container">
+            <h2>Naujausi projektai</h2>
+            <div class="projects-list">
+                <!-- .project*3>h3{Title $}+p{Aprasymas}+p{Technologijos}+p>a.btn[href=#]{Peržiūrėti} -->
+                <div class="project">
+                    <h3>Title 1</h3>
+                    <p>Aprasymas</p>
+                    <p>
+                        <span>React</span>
+                        <span>MongoDB</span>
+                        <span>Express.js</span>
+                    </p>
+                    <p>
+                        <a href="#" class="btn">Peržiūrėti</a>
+                    </p>
+                </div>
+                <div class="project">
+                    <h3>Title 2</h3>
+                    <p>Aprasymas</p>
+                    <p>Technologijos</p>
+                    <p>
+                        <a href="#" class="btn">Peržiūrėti</a>
+                    </p>
+                </div>
+                <div class="project">
+                    <h3>Title 3</h3>
+                    <p>Aprasymas</p>
+                    <p>Technologijos</p>
+                    <p>
+                        <a href="#" class="btn">Peržiūrėti</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        fetch('http://localhost:7788/projects/latest/3')
+            .then(response => response.json())
+            .then(projects => {
+                // console.log(projects)
+
+                let blokas = document.querySelector('.newest-projects .projects-list')
+                // console.log(blokas)
+                blokas.innerHTML = ''
+
+                for (const project of projects) {
+                    // console.log(project)
+                    blokas.innerHTML += `<div class="project">
+                            <h3>${project.name}</h3>
+                            <p>${project.description}</p>
+                            <p>${ project.technologies.map(technology => '<span>' + technology + '</span>').join(' ') }</p>
+                            <p>
+                                <a href="${project.link}" class="btn" target="_blank">Peržiūrėti</a>
+                            </p>
+                        </div>`;
+                }
+            })
+    </script>
+</body>
 </html>

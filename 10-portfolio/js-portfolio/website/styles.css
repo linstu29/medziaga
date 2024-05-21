@@ -43,6 +43,10 @@ p, li, a {
     color: white;
 }
 
+.section {
+    padding: 40px;
+}
+
 /* ============================================
 NAVBAR STYLES
 ============================================ */
@@ -83,4 +87,29 @@ HEADER STYLES
 header {
     padding: 80px 40px;
     background-color: lightblue;
+}
+
+/* ============================================
+PROJECTS SECTION STYLES
+============================================ */
+
+.newest-projects .projects-list {
+    display: flex;
+    gap: 20px;
+}
+
+.newest-projects .projects-list .project {
+    flex: 1;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.newest-projects .projects-list .project p span {
+    background-color: rgba(173, 216, 230, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 10px;
+    text-transform: uppercase;
 }
