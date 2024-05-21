@@ -381,11 +381,14 @@ naujasAutoForma.addEventListener('submit', (event) => {
 // =================================================
 
 function trintiAutomobili(id) {
+    if (confirm('Ar tikrai norite ištrinti automobilį?')) {
+
+    
     // console.log('trinsime auto su id', id)
     automobiliai = automobiliai.filter(auto => auto.id !== id)
     automobiliuSpausdinimas()
 }
-
+}
 // =================================================
 // PRADINIU DUOMENU ATSPAUSDINIMAS
 // =================================================

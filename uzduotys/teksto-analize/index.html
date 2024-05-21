@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teksto analize</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <label for="textInput">Įveskite norimą tekstą:</label>
+        <br>
+        <textarea id="textInput"></textarea>
+        <br>
+        <button id="analyzeButton" onclick="analyzeText()">Analizuoti</button>
+        <button id="clearButton" class="hidden" onclick="clearText()">Išvalyti</button>
+        <p id="wordCount"></p>
+        <p id="charCount"></p>
+        <div id="errorMessage" class="error">Įveskite tekstą!</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
