@@ -7,24 +7,30 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <nav>
-            <div class="container">
-                <div class="brand">
-                    <a href="index.html">Vardenis Pavardenis Portfolio</a>
-                    <link rel="preconnect" href="https://fonts.googleapis.com">
-                    <link rel="preconnect" href="https://fonts.gstatic.com"
-                        crossorigin>
-                    <link
-                        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:wght@400;900&display=swap"
-                        rel="stylesheet">
-                </div>
-                <ul>
-                    <li><a href="index.html">Pradžia</a></li>
-                    <li><a href="projektai.html">Projektai</a></li>
-                    <li><a href="cv.html">CV</a></li>
-                    <li><a href="susisiekti.html">Susisiekti</a></li>
-                </ul>
+        
+    <!-- nav>.container>.brand+ul -->
+    <nav>
+        <div class="container">
+            <div class="brand">
+                <a href="index.html">Vardenis Pavardenis Portfolio</a>
             </div>
-        </nav>
+            <ul>
+                <!-- li*4>a[href=#]{Nuoroda} -->
+                <li><a href="index.html" class="active">Pradžia</a></li>
+                <li><a href="projektai.html">Projektai</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="susisiekti.html">Susisiekti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- header>.container>h1+p+a[href="projektai.html"]{Mano projektai} -->
+    <header>
+        <div class="container">
+            <h1>Labas, aš esu Vardenis Pavardenis</h1>
+            <p>Full-stack JavaScript programuotojas</p>
+            <a href="projektai.html" class="btn">Mano projektai</a>
+        </div>
+    </header>
     </body>
 </html>
