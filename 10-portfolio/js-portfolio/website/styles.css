@@ -140,6 +140,12 @@ HOME PAGE PROJECTS SECTION STYLES
     gap: 20px;
 }
 
+@media only screen and (max-width: 700px) {
+    .newest-projects .projects-list {
+        flex-direction: column;
+    }
+}
+
 .newest-projects .projects-list .project {
     flex: 1;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -154,6 +160,39 @@ HOME PAGE PROJECTS SECTION STYLES
     border-radius: 5px;
     font-size: 10px;
     text-transform: uppercase;
+    display: inline-block;
+}
+
+/* ============================================
+PROJECTS FILTERS IN PROJECTS PAGE STYLES
+============================================ */
+
+.projects-filters {
+    padding-bottom: 0;
+}
+
+.projects-filters .container {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.projects-filters button {
+    border: none;
+    background: rgba(173, 216, 230, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+
+.projects-filters button:hover {
+    background: lightblue;
+}
+
+.projects-filters button.active {
+    background: #222;
+    color: white;
 }
 
 /* ============================================
@@ -174,12 +213,19 @@ PROJECTS IN PROJECTS PAGE STYLES
     width: calc((100% - 20px) / 2);
 }
 
+@media only screen and (max-width: 500px) {
+    .projects-page.projects-list .project {
+        width: 100%;
+    }
+}
+
 .projects-page.projects-list .project p span {
     background-color: rgba(173, 216, 230, 0.5);
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 10px;
     text-transform: uppercase;
+    display: inline-block;
 }
 
 /* ============================================
@@ -204,6 +250,7 @@ WORK EXPERIENCES SECTION STYLES
     font-size: 10px;
     text-transform: uppercase;
     border-radius: 5px;
+    display: inline-block;
 }
 
 /* ============================================

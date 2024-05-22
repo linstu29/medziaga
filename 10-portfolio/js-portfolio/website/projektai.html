@@ -37,6 +37,13 @@
         </div>
     </header>
 
+    <!-- .projects-filters.section>.container -->
+    <div class="projects-filters section">
+        <div class="container">
+            <p>Kraunasi...</p>
+        </div>
+    </div>
+
     <div class="projects-page projects-list section">
         <p>Kraunasi...</p>
     </div>
@@ -51,6 +58,7 @@
 
     <script>
         let projektai = []
+        let selectedTechnology = 'Žiūrėti visus'
 
         function spausdinimas() {
             let blokas = document.querySelector('.projects-list')
@@ -58,7 +66,9 @@
 
             blokas.innerHTML = ''
 
-            for (const projektas of projektai) {
+            let filteredProjects = selectedTechnology === 'Žiūrėti visus' ? projektai : projektai.filter(p => p.technologies.includes(selectedTechnology))
+
+            for (const projektas of filteredProjects) {
                 // console.log(projektas)
 
                 blokas.innerHTML += `<div class="project">
@@ -69,6 +79,39 @@
                     </div>`;
             }
         }
+
+        fetch('http://localhost:7788/projects/technologies')
+            .then(response => response.json())
+            .then(technologies => {
+                // console.log(technologies)
+
+                let blokas = document.querySelector('.projects-filters .container')
+                // console.log(blokas)
+
+                blokas.innerHTML = `<button class="active">Žiūrėti visus</button>`
+
+                for (const technology of technologies) {
+                    blokas.innerHTML += `<button>${technology}</button>`
+                }
+
+                document.querySelectorAll('.projects-filters button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        // console.log(button, button.textContent);
+                        document.querySelector('.projects-filters button.active').classList.remove('active')
+                        button.classList.add('active')
+                        selectedTechnology = button.textContent
+                        spausdinimas()
+
+                        // fetch('http://localhost:7788/projects/technologies/' + button.textContent)
+                        //     .then(response => response.json())
+                        //     .then(projects => {
+                        //         // console.log(projects)
+                        //         projektai = projects
+                        //         spausdinimas()
+                        //     })
+                    })
+                })
+            })
 
         fetch('http://localhost:7788/projects')
             .then(response => response.json())
