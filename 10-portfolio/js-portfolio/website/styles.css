@@ -56,6 +56,12 @@ nav {
     padding: 20px 40px;
 }
 
+@media only screen and (max-width: 650px) {
+    nav {
+        position: relative;
+    }
+}
+
 nav a {
     color: white;
     text-decoration: none;
@@ -72,12 +78,48 @@ nav .container {
     align-items: center;
 }
 
+nav button {
+    background: transparent;
+    border: none;
+    color: white;
+}
+
+@media only screen and (min-width: 651px) {
+    nav button {
+        display: none;
+    }
+}
+
+nav button i {
+    font-size: 20px;
+}
+
 nav ul {
     display: flex;
     gap: 20px;
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+@media only screen and (max-width: 650px) {
+    nav ul {
+        position: absolute;
+        background: #353535;
+        padding: 20px 40px;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        text-align: center;
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 651px) {
+    nav ul {
+        display: flex !important;
+    }
 }
 
 /* ============================================
@@ -90,7 +132,7 @@ header {
 }
 
 /* ============================================
-PROJECTS SECTION STYLES
+HOME PAGE PROJECTS SECTION STYLES
 ============================================ */
 
 .newest-projects .projects-list {
@@ -107,6 +149,32 @@ PROJECTS SECTION STYLES
 }
 
 .newest-projects .projects-list .project p span {
+    background-color: rgba(173, 216, 230, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+/* ============================================
+PROJECTS IN PROJECTS PAGE STYLES
+============================================ */
+
+.projects-page.projects-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.projects-page.projects-list .project {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: calc((100% - 20px) / 2);
+}
+
+.projects-page.projects-list .project p span {
     background-color: rgba(173, 216, 230, 0.5);
     padding: 5px 10px;
     border-radius: 5px;
