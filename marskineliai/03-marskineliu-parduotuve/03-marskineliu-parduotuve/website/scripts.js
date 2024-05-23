@@ -85,6 +85,22 @@ if (document.querySelector('.home-page')) {
 
                 firstColor.classList.add('active');
                 firstSize.classList.add('active');
+
+                modalContent.querySelectorAll('.colors span').forEach(spanEl => {
+                    // console.log(spanEl);
+                    spanEl.addEventListener('click', () => {
+                        modalContent.querySelector('.colors span.active').classList.remove('active');
+                        spanEl.classList.add('active');
+                    });
+                });
+
+                modalContent.querySelectorAll('.sizes span').forEach(spanEl => {
+                    // console.log(spanEl);
+                    spanEl.addEventListener('click', () => {
+                        modalContent.querySelector('.sizes span.active').classList.remove('active');
+                        spanEl.classList.add('active');
+                    });
+                });
             });
     }
 
