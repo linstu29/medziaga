@@ -47,7 +47,7 @@ if (document.querySelector('.home-page')) {
         fetch('http://localhost:7790/products/' + productId)
             .then(response => response.json())
             .then(productData => {
-                console.log(productData);
+                // console.log(productData);
 
                 let modalContent = modalWrapper.querySelector('.modal');
                 // console.log(modalContent);
@@ -86,11 +86,18 @@ if (document.querySelector('.home-page')) {
                 firstColor.classList.add('active');
                 firstSize.classList.add('active');
 
+                let selectedColor = firstColor.style.background;
+                let selectedSize = firstSize.innerText;
+                // console.log(selectedColor, selectedSize);
+                calculateFinalPrice(productData.prices, selectedColor, selectedSize);
+
                 modalContent.querySelectorAll('.colors span').forEach(spanEl => {
                     // console.log(spanEl);
                     spanEl.addEventListener('click', () => {
                         modalContent.querySelector('.colors span.active').classList.remove('active');
                         spanEl.classList.add('active');
+                        selectedColor = spanEl.style.background;
+                        calculateFinalPrice(productData.prices, selectedColor, selectedSize);
                     });
                 });
 
@@ -99,9 +106,35 @@ if (document.querySelector('.home-page')) {
                     spanEl.addEventListener('click', () => {
                         modalContent.querySelector('.sizes span.active').classList.remove('active');
                         spanEl.classList.add('active');
+                        selectedSize = spanEl.innerText;
+                        calculateFinalPrice(productData.prices, selectedColor, selectedSize);
                     });
                 });
             });
+    }
+
+    function calculateFinalPrice(productPrices, selectedColor, selectedSize) {
+        // console.log(productPrices, selectedColor, selectedSize);
+
+        let priceSpan = modalWrapper.querySelector('.price span');
+        // console.log(priceSpan);
+
+        if (!selectedColor || !selectedSize) {
+            priceSpan.textContent = 'pirmiausia pasirinkite spalvą ir dydį';
+            return;
+        }
+
+        let finalPrice = productPrices.find(price => {
+            return price.whenColor == selectedColor && price.whenSize == selectedSize
+        });
+
+        if (!finalPrice) {
+            priceSpan.textContent = 'tokios kombinacijos nėra';
+            return;
+        }
+
+        // console.log(finalPrice);
+        priceSpan.textContent = finalPrice.price + ' €';
     }
 
     function closeModal() {
