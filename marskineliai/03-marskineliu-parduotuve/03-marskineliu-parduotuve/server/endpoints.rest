@@ -1,0 +1,19 @@
+GET http://localhost:7790/
+
+###
+
+GET http://localhost:7790/products
+
+###
+
+GET http://localhost:7790/products/1
+
+###
+
+GET http://localhost:7790/products/2
+
+###
+
+POST http://localhost:7790/orders/create
+
+
