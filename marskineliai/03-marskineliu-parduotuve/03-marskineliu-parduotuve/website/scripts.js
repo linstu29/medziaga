@@ -22,9 +22,9 @@ if (document.querySelector('.home-page')) {
                     </div>
                     <h3>${product.title}</h3>
                     <p>
-                        ${product.priceMin == product.priceMax
+                        ${ product.priceMin == product.priceMax
                         ? product.priceMin
-                        : product.priceMin + ' - ' + product.priceMax} €
+                        : product.priceMin + ' - ' + product.priceMax } €
                     </p>
                     <button onclick="openModal(${product.id})">Peržiūra</button>
                 </div>`;
@@ -56,27 +56,35 @@ if (document.querySelector('.home-page')) {
                     <h2>${productData.title}</h2>
                     <div class="content">
                         <div class="left-col">
-                        <div class="image-wrapper">
+                            <div class="image-wrapper">
                                 <img src="${productData.image}" alt="${productData.title}">
                             </div>
                         </div>
                         <div class="right-col">
                             <p>${productData.description}</p>
                             <p class="colors">
-                            <strong>Spalvos:</strong>
-                            ${productData.colors.map(color => `<span style="background: ${color}"></span>`).join('')}
-                        </p>
-                        <p class="sizes">
-                        <strong>Dydis:</strong>
-                        ${productData.sizes.map(size => `<span>${size}</span>`).join('')}
-                    </p>
-                    <p class="price">
+                                <strong>Spalvos:</strong>
+                                ${ productData.colors.map(color => `<span style="background: ${color}"></span>`).join('') }
+                            </p>
+                            <p class="sizes">
+                                <strong>Dydis:</strong>
+                                ${ productData.sizes.map(size => `<span>${size}</span>`).join('') }
+                            </p>
+                            <p class="price">
                                 <strong>Kaina:</strong>
                                 <span>pirmiausia pasirinkite spalva ir dydį</span>
                             </p>
                             <button>Pirkti</button>
                         </div>
+                    </div>
                 `;
+
+                let firstColor = modalContent.querySelector('.colors span');
+                let firstSize = modalContent.querySelector('.sizes span');
+                // console.log(firstColor, firstSize);
+
+                firstColor.classList.add('active');
+                firstSize.classList.add('active');
             });
     }
 
