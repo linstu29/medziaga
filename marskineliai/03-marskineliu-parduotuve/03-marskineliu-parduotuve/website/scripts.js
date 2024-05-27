@@ -110,6 +110,31 @@ if (document.querySelector('.home-page')) {
                         calculateFinalPrice(productData.prices, selectedColor, selectedSize);
                     });
                 });
+
+                modalContent.querySelector('button').addEventListener('click', () => {
+                    // gaunam cart is localstorage ARBA susikuriam tuscia masyva
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    // console.log(cart);
+
+                    // arba kitaip:
+                    // let cart = [];
+
+                    // if (localStorage.getItem('cart')) {
+                    //     cart = JSON.parse(localStorage.getItem('cart'));
+                    // }
+                    // -------
+
+                    if (cart.find(item => item.productId == productData.id && item.color == selectedColor && item.size == selectedSize)) {
+                        alert('Toks produktas jau yra krepšelyje');
+                    } else {
+                        cart.push({ productId: productData.id, color: selectedColor, size: selectedSize });
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        closeModal();
+                        // alert('Prekė pridėta į krepšelį');
+                        document.querySelector('.modal-wrapper.success').classList.add('active');
+                    }
+                });
+
             });
     }
 
@@ -146,8 +171,29 @@ if (document.querySelector('.home-page')) {
     }
 
     document.querySelector('.modal-wrapper .backdrop').addEventListener('click', closeModal);
+
+    document.querySelector('.modal-wrapper.success .backdrop').addEventListener('click', () => {
+        document.querySelector('.modal-wrapper.success').classList.remove('active');
+    });
 }
 
 // ================================================
 // CART
 // ================================================
+
+if (document.querySelector('.cart-page')) {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    // console.log(cart);
+
+    let block = document.querySelector('.cart-items .container');
+
+    if (cart) {
+        block.innerHTML = '';
+
+        for (const item of cart) {
+            block.innerHTML += `<div class="cart-item">${item.productId} ${item.color} ${item.size}</div>`
+        }
+    } else {
+        block.innerHTML = '<p>Krepšelis tuščias</p>';
+    } 
+}
