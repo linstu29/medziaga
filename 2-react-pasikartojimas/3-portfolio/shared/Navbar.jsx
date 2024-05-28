@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link} from 'react-router-dom';
+import './Navbar.css';
 
 const Navbar = () => {
     return (
@@ -6,7 +7,7 @@ const Navbar = () => {
             <div className="container">
                 <div className="brand">
                     {/* <a href="/">Vardenis Pavardenis portfolio</a> */}
-                    <NavLink to="/">Vardenis Pavardenis portfolio</NavLink>
+                    <Link to="/">Vardenis Pavardenis portfolio</Link>
                 </div>
                 <ul>
                     <li><NavLink to='/'>Pradžia</NavLink></li>
