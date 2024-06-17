@@ -1,0 +1,97 @@
+GET http://localhost:3000/
+
+###
+
+GET http://localhost:3000/gyvunai
+
+###
+
+GET http://localhost:3000/gyvunai/2
+
+###
+
+GET http://localhost:3000/gyvunai/nesamone
+
+###
+
+GET http://localhost:3000/gyvunai/1000
+
+###
+
+POST http://localhost:3000/gyvunai
+Content-Type: application/json
+
+{
+    "name": "Pukis",
+    "age": 2
+}
+
+###
+
+POST http://localhost:3000/gyvunai
+Content-Type: application/json
+
+{}
+
+###
+
+POST http://localhost:3000/gyvunai
+Content-Type: application/json
+
+{
+    "name": "Pukis"
+}
+
+###
+
+POST http://localhost:3000/gyvunai
+Content-Type: application/json
+
+{
+    "name": "Pukis",
+    "age": -5
+}
+
+###
+
+DELETE http://localhost:3000/gyvunai/1
+
+###
+
+DELETE http://localhost:3000/gyvunai/nesamone
+
+###
+
+PATCH http://localhost:3000/gyvunai/2
+Content-Type: application/json
+
+{
+    "age": 5
+}
+
+###
+
+PATCH http://localhost:3000/gyvunai/nesamone
+Content-Type: application/json
+
+{
+    "age": 5
+}
+
+###
+
+PATCH http://localhost:3000/gyvunai/1000
+Content-Type: application/json
+
+{
+    "age": 5
+}
+
+###
+
+PATCH http://localhost:3000/gyvunai/2
+Content-Type: application/json
+
+{
+    "age": -10
+}

@@ -1,0 +1,73 @@
+GET http://localhost:3000/
+
+###
+
+GET http://localhost:3000/about
+
+###
+
+GET http://localhost:3000/some-info
+
+###
+
+GET http://localhost:3000/contacts
+
+###
+
+GET http://localhost:3000/cars
+
+###
+
+GET http://localhost:3000/apskaiciuoti/kompiuteris
+
+###
+
+GET http://localhost:3000/apskaiciuoti/panda
+
+###
+
+GET http://localhost:3000/apskaiciuoti/klaviatura
+
+###
+
+GET http://localhost:3000/lyginis/30
+
+###
+
+GET http://localhost:3000/lyginis/15
+
+###
+
+GET http://localhost:3000/sakinys/Jonas/Programuotojas
+
+###
+
+GET http://localhost:3000/sakinys/Buhaltere/Ona
+
+###
+
+POST http://localhost:3000/sukurti-studenta
+Content-Type: application/json
+
+{
+    "vardas": "Jonas",
+    "pavarde": "Jonaitis",
+    "amzius": 25,
+    "kursas": 1
+}
+
+###
+
+# POST http://localhost:3000/sukurti-studenta
+# Content-Type: application/json
+
+# [
+#     {
+#         "vardas": "Jonas",
+#         "pavarde": "Jonaitis"
+#     },
+#     {
+#         "vardas": "Ona",
+#         "pavarde": "Onaitė"
+#     }
+# ]

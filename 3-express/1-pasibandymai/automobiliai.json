@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "marke": "Audi",
+        "modelis": "A4",
+        "metai": 2010
+    },
+    {
+        "id": 2,
+        "marke": "BMW",
+        "modelis": "320",
+        "metai": 2012
+    },
+    {
+        "id": 3,
+        "marke": "Audi",
+        "modelis": "A6",
+        "metai": 2015
+    },
+    {
+        "id": 4,
+        "marke": "BMW",
+        "modelis": "520",
+        "metai": 2017
+    },
+    {
+        "id": 5,
+        "marke": "Audi",
+        "modelis": "A8",
+        "metai": 2019
+    },
+    {
+        "id": 6,
+        "marke": "BMW",
+        "modelis": "730",
+        "metai": 2020
+    }
+]

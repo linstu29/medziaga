@@ -1,0 +1,31 @@
+use knygynas
+
+db.knygynas.find()
+
+db.darbuotojai.find()
+
+db.knygos.find({ kaina: 20 })
+
+db.knygos.find({ metai: 2001 })
+
+db.darbuotojai.find({ vardas: "Petras" })
+
+db.darbuotojai.find({ atlyginimas: 1000 })
+
+db.darbuotojai.find({}, { atlyginimas: 1 })
+
+db.darbuotojai.find({}, { atlyginimas: true })
+
+db.knygos.insertOne( { pavadinimas: "Marketingas Lietuvoje", metai: 2024, kaina: 30 } )
+
+db.knygos.insertOne( {'pavadinimas': 'SEO triukai', "metai": 2021, kaina: 50 } )
+
+db.darbuotojai.insertMany([ {vardas: 'Ona', atlyginimas: 1100}, {vardas:'Birutė', atlyginimas: 900} ])
+
+db.knygos.find( { _id: ObjectId('6669c88ebad0f758246eee6e')} ) 
+
+db.knygos.updateOne( { _id: ObjectId('6669d876f99bd7672cc25cfd') }, {$set: { pavadinimas: "Laumes juosta" }} )
+
+db.knygos.find( { _id: ObjectId('6669d876f99bd7672cc25cfd') } )
+
+db.knygos.deleteOne( { _id: ObjectId('6669d876f99bd7672cc25cfd') } )

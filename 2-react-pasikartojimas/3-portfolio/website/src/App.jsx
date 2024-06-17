@@ -2,9 +2,9 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
+import ProjectsPage from './pages/ProjectsPage';
 import CVPage from './pages/CVPage';
 import ContactUsPage from './pages/ContactUsPage';
-import ProjectsPage from './pages/ProjectsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {

@@ -1,0 +1,49 @@
+// 1. Suraskite visus žmones iš Vilniaus.
+
+db.atlyginimai_2018.find({ Miestas: 'Vilnius' })
+
+// 2. Suraskite visus žmones iš Kauno.
+
+db.atlyginimai_2018.find({ Miestas: 'Kaunas' })
+
+// 3. Suraskite visus žmones, kurie yra iš Vilniaus, Kauno arba Klaipėdos.
+
+db.atlyginimai_2018.find({ Miestas: {$in: ['Vilnius', 'Kaunas', 'Klaipeda']} })
+
+// 4. Suraskite visus žmones, kurie yra iš bet kurio kito miesto bet ne Vilniaus, Kauno ar Klaipėdos.
+
+db.atlyginimai_2018.find({ Miestas: {$nin: ['Vilnius']} })
+
+// 5. Suraskite visus žmones, kurie yra 3-io lygio.
+
+db.atlyginimai_2018.find({ lygis: 3 })
+
+// 6. Suraskite visus žmones, kurie yra 3-io lygio ir programuoja JavaScript.
+
+db.atlyginimai_2018.find({ 'Šaltinis': 'JavaScript', lygis: 3 })
+
+// 7. Suraskite visus žmones, kurie yra 1-o lygio, yra iš Kauno ir programuoja JavaScript.
+
+db.atlyginimai_2018.find({ Miestas: 'Kaunas', 'Šaltinis': 'JavaScript', lygis: 1 })
+
+// 8. Suraskite visus žmones, kurių programavimo kalba nėra JavaScript.
+
+db.atlyginimai_2018.find({}, { 'Šaltinis': false })
+
+// 9. Suraskite visus žmones, kurių lygis yra 2 arba 3.
+
+db.atlyginimai_2018.find({ lygis: {$in: [2, 3]} })
+
+// 10. Suraskite visus žmones, kurių atlyginimas yra iki 1000.
+
+db.atlyginimai_2018.find({ Atlyginimas: {$lte: 1000} })
+
+// 11. Suraskite visus žmones, kurių atlyginimas yra virš 3000 ir yra iš Vilniaus.
+
+db.atlyginimai_2018.find({ Miestas: 'Vilnius', Atlyginimas: {$gte: 3000} })
+
+// 12. Suraskite visus žmones, kurie yra parašę kokį nors komentarą prie savo atsakymo.
+
+({ komentaras: { $exists: true, $ne: "" } }) ??
+
+// 13. Ištraukite tik miestus, atlyginimus ir programavimo kalbą tų žmonių, kurie dirba su JavaScript ir uždirba 2000 arba daugiau.

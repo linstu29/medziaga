@@ -1,0 +1,78 @@
+.section_services {
+    padding: 100px 0 83px;
+}
+
+.section_services .section_title {
+    max-width: 890px;
+    margin: 0 auto 80px;
+}
+
+.section_services .section_content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 80px 30px;
+}
+
+.section_services .section_content > div {
+    background: rgba(244, 244, 244, 1);
+    border-radius: 20px;
+    padding: 45px;
+    width: calc((100% - 2 * 30px) / 3);
+    box-sizing: border-box;
+    transition: 0.2s all;
+}
+
+.section_services .section_content > div:hover {
+    background: rgba(12, 26, 58, 1);
+}
+
+.section_services .section_content > div h3 {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 29.28px;
+    color: rgba(12, 26, 58, 1);
+    margin: 62px 0 16px;
+    transition: 0.2s all;
+}
+
+.section_services .section_content > div:hover h3 {
+    color: rgba(244, 244, 244, 1);
+}
+
+.section_services .section_content > div p {
+    font-size: 18px;
+    line-height: 23.44px;
+    letter-spacing: 0.03em;
+    color: rgba(12, 26, 58, 0.9);
+    margin: 0;
+    transition: 0.2s all;
+}
+
+.section_services .section_content > div:hover p {
+    color: rgba(244, 244, 244, 1);
+}
+
+/* ikoneles blokelis */
+.section_services .section_content > div div {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(12, 26, 58, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s all;
+}
+
+.section_services .section_content > div:hover div {
+    background: rgba(251, 251, 251, 1);
+}
+
+.section_services .section_content > div svg path {
+    stroke: rgba(251, 251, 251, 1);
+    transition: 0.5s all;
+}
+
+.section_services .section_content > div:hover svg path {
+    stroke: rgba(12, 26, 58, 1);
+}

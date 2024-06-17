@@ -1,0 +1,28 @@
+.newest-projects .projects-list {
+    display: flex;
+    gap: 20px;
+}
+
+.newest-projects .projects-list .project {
+    flex: 1;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 700px) {
+    .newest-projects .projects-list {
+        flex-direction: column;
+    }
+}
+
+.newest-projects .projects-list .project p span {
+    background-color: rgba(173, 216, 230, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 10px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-right: 5px;
+}

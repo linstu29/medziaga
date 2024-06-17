@@ -1,0 +1,28 @@
+.section {
+    padding: 17px 0 209px;
+}
+
+.section h2 {
+    margin-top: 0;
+}
+
+.columns {
+    display: flex;
+    gap: 72px;
+    margin-top: 85px;
+}
+
+.columns .col {
+    flex: 1;
+}
+
+.columns .col > * {
+    margin-bottom: 72px;
+}
+
+/* :not(a) :not(.active) :not(#kazkas) */
+
+.columns .col .link_box {
+    margin-bottom: 32px;
+    text-align: right;
+}
