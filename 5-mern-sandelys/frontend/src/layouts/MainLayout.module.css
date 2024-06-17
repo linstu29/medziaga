@@ -1,0 +1,15 @@
+.nav {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: cornflowerblue;
+}
+
+.nav a {
+    color: white;
+}
+.nav a:hover {
+    color: bisque;
+}
